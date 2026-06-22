@@ -7,7 +7,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: #1a1218;
+            background: #000000;
             overflow: hidden;
             touch-action: pan-x pan-y pinch-zoom;
             -webkit-tap-highlight-color: transparent;
@@ -21,10 +21,26 @@
             height: 100dvh;
         }
         canvas { display: block; }
+
+        #greeting {
+            position: fixed;
+            bottom: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(20px, 4vw, 36px);
+            color: #e8b4b8;
+            letter-spacing: 2px;
+            z-index: 5;
+            pointer-events: none;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(200, 120, 130, 0.3), 0 0 40px rgba(200, 120, 130, 0.15);
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
     <div id="container"></div>
+    <div id="greeting">毕业快乐呀，小太阳！</div>
 
     <script type="importmap">
     {
@@ -42,8 +58,8 @@
     // ==================== 场景 ====================
     const container = document.getElementById('container');
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#1a1218');
-    scene.fog = new THREE.Fog('#1a1218', 4, 12);
+    scene.background = new THREE.Color('#000000');
+    scene.fog = new THREE.Fog('#000000', 4, 12);
 
     const camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 20);
     camera.position.set(0, 0.8, 3.8);
@@ -338,7 +354,7 @@
 
     // ==================== 组装 ====================
     const bouquetGroup = new THREE.Group();
-    bouquetGroup.scale.set(0.7, 0.7, 0.7);
+    bouquetGroup.scale.set(0.35, 0.35, 0.35);
     scene.add(bouquetGroup);
 
     // --- 主花朵 ---
