@@ -46,8 +46,8 @@
     scene.fog = new THREE.Fog('#1a1218', 4, 12);
 
     const camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 20);
-    camera.position.set(0, 1.8, 3.5);
-    camera.lookAt(0, -0.15, 0);
+    camera.position.set(0, 0.8, 3.8);
+    camera.lookAt(0, -0.05, 0);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
@@ -59,15 +59,15 @@
     container.appendChild(renderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.target.set(0, 0.0, 0);
+    controls.target.set(0, -0.05, 0.1);
     controls.enableDamping = true;
     controls.dampingFactor = 0.08;
     controls.autoRotate = true;
     controls.autoRotateSpeed = 0.5;
     controls.minDistance = 1.5;
     controls.maxDistance = 8;
-    controls.maxPolarAngle = Math.PI * 0.65;
-    controls.minPolarAngle = 0.15;
+    controls.maxPolarAngle = Math.PI * 0.6;
+    controls.minPolarAngle = 0.1;
     controls.update();
 
     // ==================== 光照 ====================
@@ -338,10 +338,7 @@
 
     // ==================== 组装 ====================
     const bouquetGroup = new THREE.Group();
-    // 缩小整束花
-    bouquetGroup.scale.set(0.6, 0.6, 0.6);
-    // 让花朵朝上：绕 X 轴旋转 -90° (Three.js 中 Y 朝上，原始数据 Z 朝上)
-    bouquetGroup.rotation.x = -Math.PI / 2;
+    bouquetGroup.scale.set(0.7, 0.7, 0.7);
     scene.add(bouquetGroup);
 
     // --- 主花朵 ---
